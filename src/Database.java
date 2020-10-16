@@ -1,4 +1,6 @@
 import files.FileIO;
+import util.Input;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -14,11 +16,33 @@ public class Database {
 
         Path dataFilePath = FileIO.createDirectoryAndFile(directoryName, fileName);
 
-//        DatabaseModifier.addContact(dataFilePath, "bill", "123123123");
+        Input input = new Input();
 
-        DatabaseModifier.deleteContact(dataFilePath, "bill");
+        System.out.println("Would you like to enter a New contct? Y/N");
+        String userInput = input.getString();
 
-        DatabaseModifier.clearList(dataFilePath);
+        if (userInput.equalsIgnoreCase("y")) {
+            System.out.println("please enter Name");
+            String name = input.getString();
+
+            System.out.println("Please enter Phone Number");
+            String phoneNumber = input.getString();
+
+            DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
+            FileIO.printFileContents(dataFilePath);
+        } else {
+            FileIO.printFileContents(dataFilePath);
+        }
+
+//        DatabaseModifier.deleteContact(dataFilePath, "bill");
+
+
+
+        //PRINT ENTIRE LIST
+//        FileIO.printFileContents(dataFilePath);
+
+        // WILL DELETE ENTIRE LIST
+//        DatabaseModifier.clearList(dataFilePath);
 
     }
 
