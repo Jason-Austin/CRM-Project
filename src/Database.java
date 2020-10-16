@@ -42,6 +42,9 @@ public class Database {
             FileIO.printFileContents(dataFilePath);
         }
 
+        //SEARCH FOR NAME
+//        DatabaseModifier.searchContact(dataFilePath, "Jason");
+
 //        DatabaseModifier.deleteContact(dataFilePath, "bill");
 
 
