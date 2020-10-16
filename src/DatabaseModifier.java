@@ -19,17 +19,24 @@ public class DatabaseModifier {
     //remove a line from the file
 
 
-    public static void deleteContact(Path path, String nameToRemove) throws IOException{
+    public static void deleteContact(Path path, String nameToRemove) throws IOException {
         List<String> fileContents = Files.readAllLines(path);
         List<String> modifiedList = new ArrayList<>();
-        for(String contact : fileContents){
+        for (String contact : fileContents) {
             //I want to remove bread
 
-            if(!contact.contains(nameToRemove)){
+            if (!contact.contains(nameToRemove)) {
                 modifiedList.add(contact);
             }
         }
         System.out.println(modifiedList);
         Files.write(path, modifiedList);
     }
+
+    public static void clearList(Path path) throws IOException  {
+        Files.write(path,new ArrayList<>());
+        System.out.println("Everyone is gone");
+        FileIO.printFileContents(path);
+    }
+
 }

@@ -17,5 +17,10 @@ public class Database {
 //        DatabaseModifier.addContact(dataFilePath, "bill", "123123123");
 
         DatabaseModifier.deleteContact(dataFilePath, "bill");
+
+        DatabaseModifier.clearList(dataFilePath);
+
     }
+
+
 }
