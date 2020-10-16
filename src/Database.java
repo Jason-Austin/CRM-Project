@@ -13,9 +13,8 @@ public class Database {
         String fileName = "Contacts.txt";
 
         Path dataFilePath = FileIO.createDirectoryAndFile(directoryName, fileName);
-//        ArrayList<String> contactList = new ArrayList<>();
-        List<String> contactList = Arrays.asList();
-        DatabaseModifier.addContact(dataFilePath, "Austin", "8303914229");
+
+        DatabaseModifier.addContact(dataFilePath, "Mike", "123123123");
 
 
     }
