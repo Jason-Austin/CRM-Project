@@ -14,8 +14,8 @@ public class Database {
 
         Path dataFilePath = FileIO.createDirectoryAndFile(directoryName, fileName);
 
-        DatabaseModifier.addContact(dataFilePath, "Mike", "123123123");
+//        DatabaseModifier.addContact(dataFilePath, "Mike", "123123123");
 
-
+        DatabaseModifier.deleteContact(dataFilePath, "Jason: 11111111");
     }
 }
