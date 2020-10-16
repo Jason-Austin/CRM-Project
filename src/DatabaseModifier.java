@@ -25,7 +25,7 @@ public class DatabaseModifier {
         for(String contact : fileContents){
             //I want to remove bread
 
-            if(!contact.equalsIgnoreCase(nameToRemove)){
+            if(!contact.contains(nameToRemove)){
                 modifiedList.add(contact);
             }
         }
