@@ -16,6 +16,8 @@ public class Database {
 
         Path dataFilePath = FileIO.createDirectoryAndFile(directoryName, fileName);
 
+        Input input = new Input();
+
         System.out.println("Welcome to Contact List");
         System.out.println("1-View Contacts");
         System.out.println("2-Add new Contact");
@@ -23,9 +25,16 @@ public class Database {
         System.out.println("4-Delete existing contact");
         System.out.println("0-Exit");
 
+        //VIEW ALL CONTACTS
+        System.out.println("Would you like to view all contacts? Y/N");
+        String userConfirm = input.getString();
 
-        Input input = new Input();
+        if (userConfirm.equalsIgnoreCase("y")) {
 
+            FileIO.printFileContents(dataFilePath);
+        }
+
+//         ADD NEW CONTACT
         System.out.println("Would you like to enter a New contact? Y/N");
         String userInput = input.getString();
 
