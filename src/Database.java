@@ -26,7 +26,7 @@ public class Database {
 
         Input input = new Input();
 
-        System.out.println("Would you like to enter a New contct? Y/N");
+        System.out.println("Would you like to enter a New contact? Y/N");
         String userInput = input.getString();
 
         if (userInput.equalsIgnoreCase("y")) {
@@ -41,6 +41,8 @@ public class Database {
         } else {
             FileIO.printFileContents(dataFilePath);
         }
+
+
 
         //SEARCH FOR NAME
 //        DatabaseModifier.searchContact(dataFilePath, "Jason");
