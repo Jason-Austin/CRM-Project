@@ -45,7 +45,7 @@ public class Database {
                     FileIO.printFileContents(dataFilePath);
                 }
                 while (viewContacts) {
-                    System.out.println("Would you like to return to main menu?");
+                    System.out.println("Would you like to return to main menu? y/n");
                     String viewConfirm = input.getString();
                     if (viewConfirm.equalsIgnoreCase("y")) {
                         viewContacts = false;
@@ -87,14 +87,35 @@ public class Database {
             } else if (userDestination.equalsIgnoreCase("0")){
                 start = false;
             }
+
             //SEARCH FOR NAME
-//        DatabaseModifier.searchContact(dataFilePath, "Jason");
+            else if (userDestination.equalsIgnoreCase("3")) {
 
-//        DatabaseModifier.deleteContact(dataFilePath, "bill");
+                boolean yesSearch = true;
 
+                System.out.println("Enter name you would like to search for");
 
-            //PRINT ENTIRE LIST
-//        FileIO.printFileContents(dataFilePath);
+                while (yesSearch) {
+
+                    String userSearch = input.getString();
+                    DatabaseModifier.searchContact(dataFilePath, userSearch);
+
+                    System.out.println("Would you like to search a new name? y/n");
+                    String confirm = input.getString();
+                    if (!confirm.equalsIgnoreCase("y")) {
+                        System.out.println("\nReturning to main menu");
+                        yesSearch = false;
+                    }
+                }
+            }
+
+            // DELETE Existing contact
+
+            else if (userDestination.equalsIgnoreCase("4")){
+                String deleteUser = input.getString();
+                        DatabaseModifier.deleteContact(dataFilePath, deleteUser);
+            }
+
 
             // WILL DELETE ENTIRE LIST
 //        DatabaseModifier.clearList(dataFilePath);
