@@ -116,6 +116,7 @@ public class Database {
                 String deleteUser = input.getString();
 
                 DatabaseModifier.deleteContact(dataFilePath, deleteUser);
+                System.out.printf("%s has been deleted from the contact list\n", deleteUser);
             }
 
             // WILL DELETE ENTIRE LIST
