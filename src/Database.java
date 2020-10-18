@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Database {
 
@@ -13,6 +14,7 @@ public class Database {
     public static void main(String[] args) throws IOException {
         String directoryName = "Contacts";
         String fileName = "Contacts.txt";
+        Boolean yesEnter = true;
 
         Path dataFilePath = FileIO.createDirectoryAndFile(directoryName, fileName);
 
@@ -38,19 +40,27 @@ public class Database {
         System.out.println("Would you like to enter a New contact? Y/N");
         String userInput = input.getString();
 
-        if (userInput.equalsIgnoreCase("y")) {
-            System.out.println("please enter Name");
-            String name = input.getString();
+        while(yesEnter) {
+            if (userInput.equalsIgnoreCase("y")) {
+                System.out.println("please enter Name");
+                String name = input.getString();
 
-            System.out.println("Please enter Phone Number");
-            String phoneNumber = input.getString();
+                System.out.println("Please enter Phone Number");
+                String phoneNumber = input.getString();
 
-            DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
-            FileIO.printFileContents(dataFilePath);
-        } else {
-            FileIO.printFileContents(dataFilePath);
+                DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
+                FileIO.printFileContents(dataFilePath);
+
+                System.out.println("Would you like to enter a new name? y/n");
+                String confirm = input.getString();
+                if (!confirm.equalsIgnoreCase("y")){
+                    System.out.println("Returning to main menu");
+                    yesEnter = false;
+                }
+            } else {
+                FileIO.printFileContents(dataFilePath);
+            }
         }
-
 
 
         //SEARCH FOR NAME
