@@ -25,7 +25,7 @@ public class Database {
 
         while (start) {
             System.out.println("Welcome to the Contact List\n");
-            System.out.println("1-View Contacts");
+            System.out.println("1-View all Contacts");
             System.out.println("2-Add new Contact");
             System.out.println("3-Search contact by name");
             System.out.println("4-Delete existing contact");
@@ -33,54 +33,59 @@ public class Database {
 
             String userDestination = input.getString();
 
-            //VIEW ALL CONTACTS
-            System.out.println("Would you like to view all contacts? Y/N");
-            String userConfirm = input.getString();
+    //VIEW ALL CONTACTS
 
-            boolean viewContacts = true;
+            if (userDestination.equalsIgnoreCase("1")) {
+                System.out.println("Would you like to view all contacts? Y/N");
+                String userConfirm = input.getString();
 
-            if (userConfirm.equalsIgnoreCase("y")) {
-                FileIO.printFileContents(dataFilePath);
-            }
-            while (viewContacts){
-                System.out.println("Would you like to return to main menu?");
-                String viewConfirm = input.getString();
-                if (viewConfirm.equalsIgnoreCase("y")){
-                    viewContacts = false;
+                boolean viewContacts = true;
+
+                if (userConfirm.equalsIgnoreCase("y")) {
+                    FileIO.printFileContents(dataFilePath);
+                }
+                while (viewContacts) {
+                    System.out.println("Would you like to return to main menu?");
+                    String viewConfirm = input.getString();
+                    if (viewConfirm.equalsIgnoreCase("y")) {
+                        viewContacts = false;
+                    }
                 }
             }
-
 
 //         ADD NEW CONTACT
+
+            else if (userDestination.equalsIgnoreCase("2")) {
                 System.out.println("Would you like to enter a New contact? Y/N");
-            String userInput = input.getString();
+                String userInput = input.getString();
 
-            Boolean yesEnter = true;
+                Boolean yesEnter = true;
 
-            while (yesEnter) {
-                if (userInput.equalsIgnoreCase("y")) {
-                    System.out.println("please enter Name");
-                    String name = input.getString();
+                while (yesEnter) {
+                    if (userInput.equalsIgnoreCase("y")) {
+                        System.out.println("please enter Name");
+                        String name = input.getString();
 
-                    System.out.println("Please enter Phone Number");
-                    String phoneNumber = input.getString();
+                        System.out.println("Please enter Phone Number");
+                        String phoneNumber = input.getString();
 
-                    DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
-                    FileIO.printFileContents(dataFilePath);
+                        DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
+                        FileIO.printFileContents(dataFilePath);
 
-                    System.out.println("Would you like to enter a new name? y/n");
-                    String confirm = input.getString();
-                    if (!confirm.equalsIgnoreCase("y")) {
-                        System.out.println("Returning to main menu");
+                        System.out.println("Would you like to enter a new name? y/n");
+                        String confirm = input.getString();
+                        if (!confirm.equalsIgnoreCase("y")) {
+                            System.out.println("Returning to main menu");
+                            yesEnter = false;
+                        }
+                    } else {
+                        FileIO.printFileContents(dataFilePath);
                         yesEnter = false;
                     }
-                } else {
-                    FileIO.printFileContents(dataFilePath);
-                    yesEnter = false;
                 }
+            } else if (userDestination.equalsIgnoreCase("0")){
+                start = false;
             }
-
-
             //SEARCH FOR NAME
 //        DatabaseModifier.searchContact(dataFilePath, "Jason");
 
