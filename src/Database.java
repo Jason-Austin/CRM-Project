@@ -110,7 +110,7 @@ public class Database {
             }
 
             // DELETE Existing contact
-
+//TODO: Make this into a loop, to ask if they would like to delete a new user o return to main menu.
             else if (userDestination.equalsIgnoreCase("4")){
                 System.out.println("Enter name of user to delete");
                 String deleteUser = input.getString();
