@@ -45,7 +45,7 @@ public class Database {
                     FileIO.printFileContents(dataFilePath);
                 }
                 while (viewContacts) {
-                    System.out.println("Would you like to return to main menu? y/n");
+                    System.out.println("\nWould you like to return to main menu? y/n");
                     String viewConfirm = input.getString();
                     if (viewConfirm.equalsIgnoreCase("y")) {
                         viewContacts = false;
@@ -75,7 +75,7 @@ public class Database {
                         System.out.println("Would you like to enter a new name? y/n");
                         String confirm = input.getString();
                         if (!confirm.equalsIgnoreCase("y")) {
-                            System.out.println("\nReturning to main menu");
+                            System.out.println("\nReturning to main menu\n");
                             yesEnter = false;
                         }
                     } else {
@@ -112,10 +112,11 @@ public class Database {
             // DELETE Existing contact
 
             else if (userDestination.equalsIgnoreCase("4")){
+                System.out.println("Enter name of user to delete");
                 String deleteUser = input.getString();
-                        DatabaseModifier.deleteContact(dataFilePath, deleteUser);
-            }
 
+                DatabaseModifier.deleteContact(dataFilePath, deleteUser);
+            }
 
             // WILL DELETE ENTIRE LIST
 //        DatabaseModifier.clearList(dataFilePath);
