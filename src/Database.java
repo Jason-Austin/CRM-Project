@@ -75,12 +75,13 @@ public class Database {
                         System.out.println("Would you like to enter a new name? y/n");
                         String confirm = input.getString();
                         if (!confirm.equalsIgnoreCase("y")) {
-                            System.out.println("Returning to main menu");
+                            System.out.println("\nReturning to main menu");
                             yesEnter = false;
                         }
                     } else {
-                        FileIO.printFileContents(dataFilePath);
+                        System.out.println("Returning to main menu\n");
                         yesEnter = false;
+
                     }
                 }
             } else if (userDestination.equalsIgnoreCase("0")){
