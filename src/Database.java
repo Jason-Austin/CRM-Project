@@ -65,6 +65,7 @@ public class Database {
                 Boolean yesEnter = true;
 
                 while (yesEnter) {
+//                    String userInput = input.getString();
                     if (userInput.equalsIgnoreCase("y")) {
                         System.out.println("please enter Name");
                         String name = input.getString();
@@ -87,6 +88,9 @@ public class Database {
                                 System.out.println("\nReturning to main menu\n");
                             }
                         }
+                    } else {
+                        yesEnter = false;
+                        System.out.println("\nReturning to main menu\n");
                     }
                 }
             }
@@ -97,10 +101,8 @@ public class Database {
 
                 boolean yesSearch = true;
 
-                System.out.println("Enter name you would like to search for");
-
                 while (yesSearch) {
-
+                    System.out.println("Enter name you would like to search for");
                     String userSearch = input.getString();
                     DatabaseModifier.searchContact(dataFilePath, userSearch);
 
@@ -109,7 +111,6 @@ public class Database {
 
                     if (!confirm.equalsIgnoreCase("y")) {
                         System.out.println("Would you like to return to main menu? Y/N");
-
 
                         String userConfirm = input.getString();
                         if (userConfirm.equalsIgnoreCase("y")) {
@@ -137,7 +138,6 @@ public class Database {
                     String confirm = input.getString();
                     if (!confirm.equalsIgnoreCase("y")) {
                         System.out.println("Would you like to return to main menu? Y/N");
-
 
                         String userConfirm = input.getString();
                         if (userConfirm.equalsIgnoreCase("y")) {

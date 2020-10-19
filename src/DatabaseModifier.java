@@ -29,20 +29,17 @@ public class DatabaseModifier {
             }
         }
         System.out.println(modifiedList);
-        Files.write(path, modifiedList);
+//        Files.write(path, modifiedList);
     }
 
     //remove a line from the file
 
 
     public static void deleteContact(Path path, String nameToRemove) throws IOException {
-        System.out.println("Enter new name, and phoneNumber");
         List<String> fileContents = Files.readAllLines(path);
         List<String> modifiedList = new ArrayList<>();
         for (String contact : fileContents) {
-
-
-            if (!contact.contains(nameToRemove.toLowerCase())) {
+            if (!contact.contains(nameToRemove)) {
                 modifiedList.add(contact);
             }
         }
@@ -51,7 +48,7 @@ public class DatabaseModifier {
     }
 
     public static void clearList(Path path) throws IOException  {
-        Files.write(path,new ArrayList<>());
+        Files.write(path, new ArrayList<>());
         System.out.println("Everyone is gone");
         FileIO.printFileContents(path);
     }
