@@ -11,9 +11,9 @@ import java.util.List;
 public class DatabaseModifier {
 
     public static void addContact(Path path, String name, String phoneNumber) throws IOException {
-        String contactInfo = name + ": " + phoneNumber;
+        String contactInfo = String.format("%-15s" ,name) + String.format("| %-12s |" ,phoneNumber);
         Files.write(path, Arrays.asList(contactInfo), StandardOpenOption.APPEND);
-        System.out.printf("%s(%s) added to Contacts.txt\n", name, phoneNumber);
+        System.out.printf("%-10s| %-10s added to Contacts.txt\n", name, phoneNumber);
     }
 
     //TODO: add Search by NAme function. PREVENT search from deleting existin names

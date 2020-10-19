@@ -42,6 +42,7 @@ public class Database {
                 boolean viewContacts = true;
 
                 if (userConfirm.equalsIgnoreCase("y")) {
+//                    System.out.printf("%-10s %-10s \n", "Name |", "Phone Number |");
                     FileIO.printFileContents(dataFilePath);
                 }
                 while (viewContacts) {
