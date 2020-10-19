@@ -40,9 +40,9 @@ public class DatabaseModifier {
         List<String> fileContents = Files.readAllLines(path);
         List<String> modifiedList = new ArrayList<>();
         for (String contact : fileContents) {
-            //I want to remove bread
 
-            if (!contact.contains(nameToRemove)) {
+
+            if (!contact.contains(nameToRemove.toLowerCase())) {
                 modifiedList.add(contact);
             }
         }
