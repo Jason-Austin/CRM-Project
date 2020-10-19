@@ -47,8 +47,11 @@ public class Database {
                 while (viewContacts) {
                     System.out.println("\nWould you like to return to main menu? y/n");
                     String viewConfirm = input.getString();
+
                     if (viewConfirm.equalsIgnoreCase("y")) {
                         viewContacts = false;
+                    } else {
+                        FileIO.printFileContents(dataFilePath);
                     }
                 }
             }
@@ -74,18 +77,18 @@ public class Database {
 
                         System.out.println("Would you like to enter a new name? y/n");
                         String confirm = input.getString();
-                        if (!confirm.equalsIgnoreCase("y")) {
-                            System.out.println("\nReturning to main menu\n");
-                            yesEnter = false;
-                        }
-                    } else {
-                        System.out.println("Returning to main menu\n");
-                        yesEnter = false;
 
+                        if (!confirm.equalsIgnoreCase("y")) {
+                            System.out.println("Would you like to return to main menu? y/n");
+                            String userConfirm = input.getString();
+
+                            if (userConfirm.equalsIgnoreCase("y")) {
+                                yesEnter = false;
+                                System.out.println("\nReturning to main menu\n");
+                            }
+                        }
                     }
                 }
-            } else if (userDestination.equalsIgnoreCase("0")){
-                start = false;
             }
 
             //SEARCH FOR NAME
@@ -102,9 +105,16 @@ public class Database {
 
                     System.out.println("Would you like to search a new name? y/n");
                     String confirm = input.getString();
+
                     if (!confirm.equalsIgnoreCase("y")) {
-                        System.out.println("\nReturning to main menu");
-                        yesSearch = false;
+                        System.out.println("Would you like to return to main menu? Y/N");
+
+
+                        String userConfirm = input.getString();
+                        if (userConfirm.equalsIgnoreCase("y")) {
+                            yesSearch = false;
+                            System.out.println("\nReturning to main menu\n");
+                        }
                     }
                 }
             }
@@ -135,6 +145,8 @@ public class Database {
                         }
                     }
                 }
+            } else if (userDestination.equalsIgnoreCase("0")){
+                start = false;
             }
 
             // WILL DELETE ENTIRE LIST
