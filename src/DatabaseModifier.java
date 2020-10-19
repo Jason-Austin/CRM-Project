@@ -12,6 +12,16 @@ import java.util.Scanner;
 
 public class DatabaseModifier {
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
     public static void addContact(Path path, String name, String phoneNumber) throws IOException {
         List<String> fileContents = Files.readAllLines(path);
 
@@ -29,7 +39,7 @@ public class DatabaseModifier {
 
         String contactInfo = String.format("%-15s" ,name) + String.format("| %-12s |" ,phoneNumber);
         Files.write(path, Arrays.asList(contactInfo), StandardOpenOption.APPEND);
-        System.out.printf("%-10s| %-10s added to Contacts.txt\n", name, phoneNumber);
+        System.out.printf(DatabaseModifier.ANSI_GREEN + "\n%s: %s was Added to Contacts\n"+ DatabaseModifier.ANSI_RESET, name, phoneNumber );
     }
 
     //TODO: add Search by NAme function. PREVENT search from deleting existin names
@@ -96,5 +106,7 @@ public class DatabaseModifier {
         }
         Files.write(filePath, modifiedList);
     }
+
+
 
 }

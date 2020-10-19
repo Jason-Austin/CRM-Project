@@ -24,20 +24,20 @@ public class Database {
 
 
         while (start) {
-            System.out.println("Welcome to the Contact List\n");
+            System.out.println(DatabaseModifier.ANSI_BLUE + "\nWelcome to the Contact List\n" + DatabaseModifier.ANSI_RESET);
             System.out.println("1-View all Contacts");
             System.out.println("2-Add new Contact");
             System.out.println("3-Search contact by name");
             System.out.println("4-Delete existing contact");
             System.out.println("0-Exit");
-            System.out.println("Enter an option (1, 2, 3, 4 or 0):");
+            System.out.println(DatabaseModifier.ANSI_GREEN + "Enter an option (1, 2, 3, 4 or 0):" + DatabaseModifier.ANSI_RESET);
 
             String userDestination = input.getString();
 
     //VIEW ALL CONTACTS
 
             if (userDestination.equalsIgnoreCase("1")) {
-                System.out.println("Would you like to view all contacts? Y/N");
+                System.out.println(DatabaseModifier.ANSI_GREEN + "Would you like to view all contacts? y/n" + DatabaseModifier.ANSI_RESET);
 
                 String userConfirm = input.getString();
 
@@ -49,7 +49,7 @@ public class Database {
                     FileIO.printFileContents(dataFilePath);
                 }
                 while (viewContacts) {
-                    System.out.println("\nWould you like to return to main menu? y/n");
+                    System.out.println(DatabaseModifier.ANSI_YELLOW + "\nWould you like to return to main menu? y/n" + DatabaseModifier.ANSI_RESET);
                     String viewConfirm = input.getString();
 
                     if (viewConfirm.equalsIgnoreCase("y")) {
@@ -63,27 +63,26 @@ public class Database {
 //         ADD NEW CONTACT
 
             else if (userDestination.equalsIgnoreCase("2")) {
-                System.out.println("Would you like to enter a New contact? Y/N");
+                System.out.println(DatabaseModifier.ANSI_YELLOW + "Would you like to enter a New contact? y/n" + DatabaseModifier.ANSI_RESET);
                 String userInput = input.getString();
 
                 Boolean yesEnter = true;
 
                 while (yesEnter) {
                     if (userInput.equalsIgnoreCase("y")) {
-                        System.out.println("please enter Name");
+                        System.out.println(DatabaseModifier.ANSI_GREEN + "Please enter Name" + DatabaseModifier.ANSI_RESET);
                         String name = input.getString();
 
-                        System.out.println("Please enter Phone Number");
+                        System.out.println(DatabaseModifier.ANSI_GREEN + "Please enter Phone Number" + DatabaseModifier.ANSI_RESET);
                         String phoneNumber = input.getString();
 
-                        DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
-                        FileIO.printFileContents(dataFilePath);
+                         DatabaseModifier.addContact(dataFilePath, name, phoneNumber);
 
-                        System.out.println("Would you like to enter a new name? y/n");
+                        System.out.println(DatabaseModifier.ANSI_YELLOW + "\nWould you like to another contact? y/n" + DatabaseModifier.ANSI_RESET);
                         String confirm = input.getString();
 
                         if (!confirm.equalsIgnoreCase("y")) {
-                            System.out.println("Would you like to return to main menu? y/n");
+                            System.out.println(DatabaseModifier.ANSI_YELLOW + "\nWould you like to return to main menu? y/n" + DatabaseModifier.ANSI_RESET);
                             String userConfirm = input.getString();
 
                             if (userConfirm.equalsIgnoreCase("y")) {
@@ -105,15 +104,15 @@ public class Database {
                 boolean yesSearch = true;
 
                 while (yesSearch) {
-                    System.out.println("Enter name you would like to search for");
+                    System.out.println(DatabaseModifier.ANSI_GREEN + "Enter name you would like to search for" + DatabaseModifier.ANSI_RESET);
                     String userSearch = input.getString();
                     DatabaseModifier.searchContact(dataFilePath, userSearch);
 
-                    System.out.println("Would you like to search a new name? y/n");
+                    System.out.println(DatabaseModifier.ANSI_YELLOW + "Would you like to search a new name? y/n" + DatabaseModifier.ANSI_RESET);
                     String confirm = input.getString();
 
                     if (!confirm.equalsIgnoreCase("y")) {
-                        System.out.println("Would you like to return to main menu? Y/N");
+                        System.out.println(DatabaseModifier.ANSI_YELLOW + "\nWould you like to return to main menu? y/n" + DatabaseModifier.ANSI_RESET);
 
                         String userConfirm = input.getString();
                         if (userConfirm.equalsIgnoreCase("y")) {
@@ -131,16 +130,16 @@ public class Database {
                 boolean yesDelete = true;
 
                 while (yesDelete) {
-                    System.out.println("Enter name of user to delete");
+                    System.out.println(DatabaseModifier.ANSI_GREEN + "Enter name of contact to delete" + DatabaseModifier.ANSI_RESET);
                     String deleteUser = input.getString();
 
                     DatabaseModifier.deleteContact(dataFilePath, deleteUser);
-                    System.out.printf("%s has been deleted from the contact list\n", deleteUser);
+                    System.out.printf(DatabaseModifier.ANSI_RED + "\n%s has been deleted from the contact list\n", deleteUser + DatabaseModifier.ANSI_RESET);
 
-                    System.out.println("Would you like to delete another user? y/n");
+                    System.out.println(DatabaseModifier.ANSI_YELLOW + "\nWould you like to delete another user? y/n" + DatabaseModifier.ANSI_RESET);
                     String confirm = input.getString();
                     if (!confirm.equalsIgnoreCase("y")) {
-                        System.out.println("Would you like to return to main menu? Y/N");
+                        System.out.println(DatabaseModifier.ANSI_YELLOW + "Would you like to return to main menu? Y/N" + DatabaseModifier.ANSI_RESET);
 
                         String userConfirm = input.getString();
                         if (userConfirm.equalsIgnoreCase("y")) {
