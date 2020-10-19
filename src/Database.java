@@ -47,8 +47,11 @@ public class Database {
                 while (viewContacts) {
                     System.out.println("\nWould you like to return to main menu? y/n");
                     String viewConfirm = input.getString();
+
                     if (viewConfirm.equalsIgnoreCase("y")) {
                         viewContacts = false;
+                    } else {
+                        FileIO.printFileContents(dataFilePath);
                     }
                 }
             }
@@ -74,20 +77,21 @@ public class Database {
 
                         System.out.println("Would you like to enter a new name? y/n");
                         String confirm = input.getString();
-                        if (!confirm.equalsIgnoreCase("y")) {
-                            System.out.println("\nReturning to main menu\n");
-                            yesEnter = false;
-                        }
-                    } else {
-                        System.out.println("Returning to main menu\n");
-                        yesEnter = false;
 
+                        if (!confirm.equalsIgnoreCase("y")) {
+                            System.out.println("Would you like to return to main menu? y/n");
+                            String userConfirm = input.getString();
+
+                            if (userConfirm.equalsIgnoreCase("y")) {
+                                yesEnter = false;
+                                System.out.println("\nReturning to main menu\n");
+                            }
+                        }
                     }
                 }
-            } else if (userDestination.equalsIgnoreCase("0")){
-                start = false;
             }
 
+//TODO: Fix search so that it doesn't delete ALL users that are not the same as the one that was searched.
             //SEARCH FOR NAME
             else if (userDestination.equalsIgnoreCase("3")) {
 
@@ -102,21 +106,48 @@ public class Database {
 
                     System.out.println("Would you like to search a new name? y/n");
                     String confirm = input.getString();
+
                     if (!confirm.equalsIgnoreCase("y")) {
-                        System.out.println("\nReturning to main menu");
-                        yesSearch = false;
+                        System.out.println("Would you like to return to main menu? Y/N");
+
+
+                        String userConfirm = input.getString();
+                        if (userConfirm.equalsIgnoreCase("y")) {
+                            yesSearch = false;
+                            System.out.println("\nReturning to main menu\n");
+                        }
                     }
                 }
             }
 
             // DELETE Existing contact
-//TODO: Make this into a loop, to ask if they would like to delete a new user o return to main menu.
-            else if (userDestination.equalsIgnoreCase("4")){
-                System.out.println("Enter name of user to delete");
-                String deleteUser = input.getString();
 
-                DatabaseModifier.deleteContact(dataFilePath, deleteUser);
-                System.out.printf("%s has been deleted from the contact list\n", deleteUser);
+            else if (userDestination.equalsIgnoreCase("4")) {
+
+                boolean yesDelete = true;
+
+                while (yesDelete) {
+                    System.out.println("Enter name of user to delete");
+                    String deleteUser = input.getString();
+
+                    DatabaseModifier.deleteContact(dataFilePath, deleteUser);
+                    System.out.printf("%s has been deleted from the contact list\n", deleteUser);
+
+                    System.out.println("Would you like to delete another user? y/n");
+                    String confirm = input.getString();
+                    if (!confirm.equalsIgnoreCase("y")) {
+                        System.out.println("Would you like to return to main menu? Y/N");
+
+
+                        String userConfirm = input.getString();
+                        if (userConfirm.equalsIgnoreCase("y")) {
+                            yesDelete = false;
+                            System.out.println("\nReturning to main menu\n");
+                        }
+                    }
+                }
+            } else if (userDestination.equalsIgnoreCase("0")){
+                start = false;
             }
 
             // WILL DELETE ENTIRE LIST
