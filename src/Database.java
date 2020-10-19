@@ -30,6 +30,7 @@ public class Database {
             System.out.println("3-Search contact by name");
             System.out.println("4-Delete existing contact");
             System.out.println("0-Exit");
+            System.out.println("Enter an option (1, 2, 3, 4 or 0):");
 
             String userDestination = input.getString();
 
@@ -37,12 +38,14 @@ public class Database {
 
             if (userDestination.equalsIgnoreCase("1")) {
                 System.out.println("Would you like to view all contacts? Y/N");
+
                 String userConfirm = input.getString();
 
                 boolean viewContacts = true;
 
                 if (userConfirm.equalsIgnoreCase("y")) {
-//                    System.out.printf("%-10s %-10s \n", "Name |", "Phone Number |");
+                    System.out.printf("   %-15s| %-12s |\n", "Name","Phone Number");
+                    System.out.println("----------------------------------");
                     FileIO.printFileContents(dataFilePath);
                 }
                 while (viewContacts) {

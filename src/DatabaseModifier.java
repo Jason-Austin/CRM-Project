@@ -29,7 +29,6 @@ public class DatabaseModifier {
             }
         }
         System.out.println(modifiedList);
-//        Files.write(path, modifiedList);
     }
 
     //remove a line from the file
