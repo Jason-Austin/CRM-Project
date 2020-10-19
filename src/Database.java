@@ -69,7 +69,6 @@ public class Database {
                 Boolean yesEnter = true;
 
                 while (yesEnter) {
-//                    String userInput = input.getString();
                     if (userInput.equalsIgnoreCase("y")) {
                         System.out.println("please enter Name");
                         String name = input.getString();
@@ -99,7 +98,7 @@ public class Database {
                 }
             }
 
-//TODO: Fix search so that it doesn't delete ALL users that are not the same as the one that was searched.
+
             //SEARCH FOR NAME
             else if (userDestination.equalsIgnoreCase("3")) {
 
