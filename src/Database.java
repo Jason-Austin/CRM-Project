@@ -110,13 +110,25 @@ public class Database {
             }
 
             // DELETE Existing contact
-//TODO: Make this into a loop, to ask if they would like to delete a new user o return to main menu.
-            else if (userDestination.equalsIgnoreCase("4")){
-                System.out.println("Enter name of user to delete");
-                String deleteUser = input.getString();
 
-                DatabaseModifier.deleteContact(dataFilePath, deleteUser);
-                System.out.printf("%s has been deleted from the contact list\n", deleteUser);
+            else if (userDestination.equalsIgnoreCase("4")) {
+
+                boolean yesDelete = true;
+
+                while (yesDelete) {
+                    System.out.println("Enter name of user to delete");
+                    String deleteUser = input.getString();
+
+//                    DatabaseModifier.deleteContact(dataFilePath, deleteUser);
+                    System.out.printf("%s has been deleted from the contact list\n", deleteUser);
+
+                    System.out.println("Would you like to delete another user? y/n");
+                    String confirm = input.getString();
+                    if (!confirm.equalsIgnoreCase("y")) {
+                        System.out.println("\nReturning to main menu\n");
+                        yesDelete = false;
+                    }
+                }
             }
 
             // WILL DELETE ENTIRE LIST
