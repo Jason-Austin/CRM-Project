@@ -125,9 +125,14 @@ public class Database {
                     System.out.println("Would you like to delete another user? y/n");
                     String confirm = input.getString();
                     if (!confirm.equalsIgnoreCase("y")) {
-                        System.out.println("Would you like to return to main menu? y/n");
-                        System.out.println("\nReturning to main menu\n");
-                        yesDelete = false;
+                        System.out.println("Would you like to return to main menu? Y/N");
+
+
+                        String userConfirm = input.getString();
+                        if (userConfirm.equalsIgnoreCase("y")) {
+                            yesDelete = false;
+                            System.out.println("\nReturning to main menu\n");
+                        }
                     }
                 }
             }
